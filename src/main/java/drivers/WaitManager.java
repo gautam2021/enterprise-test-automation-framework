@@ -5,6 +5,8 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utilities.ConfigReader;
+
 public class WaitManager {
 
     private static ThreadLocal<WebDriverWait> tWait = new ThreadLocal<>();
@@ -13,7 +15,7 @@ public class WaitManager {
     public static WebDriverWait getWait() {
 	if (tWait.get() == null) {
 	    WebDriver driver = DriverManager.getDriver();
-	    tWait.set(new WebDriverWait(driver, Duration.ofSeconds(20)));
+	    tWait.set(new WebDriverWait(driver, Duration.ofSeconds(Integer.parseInt(ConfigReader.getProperties("explicitWait")))));
 	}
 	return tWait.get();
     }

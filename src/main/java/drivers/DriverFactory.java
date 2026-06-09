@@ -8,9 +8,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
-    private static WebDriver driver;
+     
 
     public static WebDriver getBrowser(String browserName) {
+	WebDriver driver;
 	if (browserName.equalsIgnoreCase("chrome")) {
 	    WebDriverManager.chromedriver().setup();
 	    driver = new ChromeDriver();

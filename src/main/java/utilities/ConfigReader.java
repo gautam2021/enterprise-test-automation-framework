@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class ConfigReader {
 
-    private static Properties prop;
+    private static Properties prop=new Properties();
 
     static {
 	String path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test" + File.separator
@@ -20,8 +20,7 @@ public class ConfigReader {
 	    prop.load(fis);
 
 	} catch (IOException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
+	    throw new RuntimeException("Failed to load config.properties", e);
 	}
 
     }
